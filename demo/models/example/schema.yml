@@ -1,0 +1,51 @@
+
+version: 2
+
+models:
+  - name: customer_purchases
+    columns:
+      - name: cust_purchasekey
+        tests:
+          - not_null
+          - unique
+      - name: o_orderstatus
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['P', 'F', 'O']
+
+
+  - name: total_customer_purchases
+    columns:
+      - name: c_custkey
+        tests:
+          - not_null
+          - unique
+
+
+
+#      - name: total_order_price
+#        tests:
+#          - dbt_utils.expression_is_true:
+#              expression: "> 100000"
+#
+
+
+
+#  - name: my_first_dbt_model
+#    description: "A starter dbt model"
+#    columns:
+#      - name: id
+#        description: "The primary key for this table"
+#        tests:
+#          - unique
+#          - not_null
+#
+#  - name: my_second_dbt_model
+#    description: "A starter dbt model"
+#    columns:
+#      - name: id
+#        description: "The primary key for this table"
+#        tests:
+#          - unique
+#          - not_null
